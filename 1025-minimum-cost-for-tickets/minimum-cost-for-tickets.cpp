@@ -1,5 +1,3 @@
-
-
 class Solution {
     int dayFinder(int i, vector<int>& days, int d) {
         int x = days[i] + d - 1;
