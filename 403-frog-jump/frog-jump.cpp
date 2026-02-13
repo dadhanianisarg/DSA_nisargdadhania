@@ -1,8 +1,8 @@
 class Solution {
     int coordinateFinder(int target, vector<int>& stones) {
-        for (int idx = 0; idx < stones.size(); idx++) {
-            if (stones[idx] == target)
-                return idx;
+        for (int ind = 0; ind < stones.size(); ind++) {
+            if (stones[ind] == target)
+                return ind;
         }
         return -1;
     }
