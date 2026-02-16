@@ -18,7 +18,6 @@ public:
             totalSum += num;
         int n = nums.size();
         vector<vector<int>> dp(n, vector<int>(2 * totalSum + 1, -1));
-
         return helper(0, 0, nums, target, dp, totalSum);
     }
 };
