@@ -24,7 +24,7 @@ public:
         sort(coins.rbegin(), coins.rend());
         int n = coins.size();
 
-        vector<vector<int>> dp(n + 1, vector<int>(amount , -1));
+        vector<vector<int>> dp(n + 1, vector<int>(amount + 1, -1));
 
         int ans = helper(0, 0, amount, coins, dp);
         return (ans == INT_MAX) ? -1 : ans;
