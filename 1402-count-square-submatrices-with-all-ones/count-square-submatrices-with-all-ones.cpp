@@ -7,13 +7,16 @@ class Solution {
             return 0;
         if (dp[i][j] != -1)
             return dp[i][j];
+
         int right = helper(i, j + 1, matrix, dp);
         int down = helper(i + 1, j, matrix, dp);
         int diag = helper(i + 1, j + 1, matrix, dp);
+        
         if (matrix[i][j] == 1)
             dp[i][j] = 1 + min({right, down, diag});
         else
             dp[i][j] = 0;
+        
         return dp[i][j];
     }
 
