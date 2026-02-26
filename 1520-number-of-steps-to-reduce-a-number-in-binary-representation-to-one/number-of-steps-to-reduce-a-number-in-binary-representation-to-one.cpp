@@ -1,33 +1,52 @@
 class Solution {
-    void divBy2(string& s) { s.erase(s.size() - 1); }
-
-    void add1(string& s) {
-        int n = s.size() - 1;
-        while (n >= 0 && s[n] != '0') {
-            s[n] = '0';
-            n--;
-        }
-        if (n < 0)
-            s = '1' + s;
-        else
-            s[n] = '1';
-    }
-
 public:
     int numSteps(string s) {
-        int n = s.size();
         int ans = 0;
-        while (s.size() > 1) {
-            n = s.size();
-            if (s[n - 1] == '0')
-                divBy2(s);
-            else
-                add1(s);
-            ans++;
+        int carry = 0;
+        for (int i = s.size() - 1; i > 0; i--) {
+            int bit = (s[i] - '0') + carry;
+            if (bit % 2 == 0)
+                ans++;
+            else {
+                ans += 2;
+                carry = 1;
+            }
         }
-        return ans;
+        return ans + carry;
     }
 };
+
+// this solution passes the testcase but more optimized version of it
+// class Solution {
+//     void divBy2(string& s) { s.erase(s.size() - 1); }
+
+//     void add1(string& s) {
+//         int n = s.size() - 1;
+//         while (n >= 0 && s[n] != '0') {
+//             s[n] = '0';
+//             n--;
+//         }
+//         if (n < 0)
+//             s = '1' + s;
+//         else
+//             s[n] = '1';
+//     }
+
+// public:
+//     int numSteps(string s) {
+//         int n = s.size();
+//         int ans = 0;
+//         while (s.size() > 1) {
+//             n = s.size();
+//             if (s[n - 1] == '0')
+//                 divBy2(s);
+//             else
+//                 add1(s);
+//             ans++;
+//         }
+//         return ans;
+//     }
+// };
 
 // this appraoch will definetly give you overflow as s.length is <= 500
 // class Solution {
